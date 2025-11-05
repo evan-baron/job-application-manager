@@ -1,0 +1,88 @@
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  auth0Id       String?   @unique
+  email         String    @unique
+  firstName     String?
+  lastName      String?
+  timezone      String?   // e.g. "America/Denver"
+  role          String?   // admin, user, etc.
+  lastSynced    DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  contacts      Contact[]
+  sequences     Sequence[]
+  messages      Message[]
+}
+
+model Contact {
+  id             Int       @id @default(autoincrement())
+  userId         Int
+  owner          User      @relation(fields: [userId], references: [id])
+  email          String
+  firstName      String?
+  lastName       String?
+  company        String?
+  phone          String?
+  associatedRole String?   // e.g. "Junior Engineer"
+  active         Boolean   @default(true )
+  lastActivity   DateTime?
+  replied        Boolean   @default(false)
+  validEmail     Boolean? 
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  messages       Message[]
+  sequences      Sequence[]  @relation("ContactSequences")
+}
+
+model Message {
+  id         Int       @id @default(autoincrement())
+  contactId  Int
+  contact    Contact   @relation(fields: [contactId], references: [id])
+  ownerId    Int?
+  owner      User?     @relation(fields: [ownerId], references: [id])
+  sequenceId Int?
+  sequence   Sequence? @relation(fields: [sequenceId], references: [id])
+  contents   String    @db.VarChar(1024)
+  direction  String    // "outbound" or "inbound"
+  date       DateTime  @default(now())
+}
+
+model Sequence {
+  id            Int       @id @default(autoincrement())
+  contactId     Int
+  contact       Contact   @relation(fields: [contactId], references: [id], name: "ContactSequences")
+  ownerId       Int
+  owner         User      @relation(fields: [ownerId], references: [id])
+  sequenceType  String    // e.g. "3-2-1"
+  autoSend      Boolean   @default(false)
+  autoSendDelay Int?      // days
+  currentStep   Int       @default(0)
+  nextStepDue   DateTime?
+  active        Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  messages      Message[]
+}
+
+model Job {
+  id         Int       @id @default(autoincrement())
+  type       String    // e.g., 'send_email', 'parse_email', 'bounce_handler'
+  payload    Json
+  status     String    @default("pending") // pending, in_progress, done, failed
+  attempts   Int       @default(0)
+  runAt      DateTime? // scheduled time
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}

@@ -1,16 +1,8 @@
 // Library imports
 import React from 'react';
 
-// Hooks imports
-
 // Styles imports
 import styles from './dashboard.module.scss';
-
-// Components imports
-import LogoutButton from '../components/auth/LogoutButton';
-import Account from '../components/dashboard/settings/account/Account';
-
-// Context imports
 
 const Dashboard = () => {
 	return (

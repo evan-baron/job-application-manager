@@ -3,15 +3,10 @@ import React from 'react';
 import { auth0 } from '@/lib/auth0';
 import { redirect } from 'next/navigation';
 
-// Hooks imports
-
-// Styles imports
 import styles from './home.module.scss';
 
 // Components imports
-import LoginButton from './components/auth/LoginButton';
-
-// Context imports
+import AuthSection from './components/authSection/AuthSection';
 
 export default async function Home() {
 	const session = await auth0.getSession();
@@ -22,21 +17,19 @@ export default async function Home() {
 	}
 
 	return (
-		<div className='home-container' role='main' aria-label='Login page'>
+		<div
+			className={styles['home-container']}
+			role='main'
+			aria-label='Login page'
+		>
 			<div className='main-card-wrapper'>
 				<section
 					className='action-card'
 					aria-labelledby='login-heading'
 					role='region'
 				>
-					<div className={styles['login-container']}>
-						<h1
-							id='login-heading'
-							aria-label='Welcome message and login prompt'
-						>
-							Welcome! Please log in to access your protected content.
-						</h1>
-						<LoginButton />
+					<div className={styles['auth-container']}>
+						<AuthSection />
 					</div>
 				</section>
 			</div>
