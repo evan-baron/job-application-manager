@@ -1,5 +1,5 @@
-import Modal from '../Modal';
-import styles from '../modal.module.scss';
+import Modal from '../../ui/Modal';
+import styles from '../../ui/modal.module.scss';
 
 interface RegisterModalProps {
 	isOpen: boolean;

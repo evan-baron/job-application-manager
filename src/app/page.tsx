@@ -6,7 +6,7 @@ import { redirect } from 'next/navigation';
 import styles from './home.module.scss';
 
 // Components imports
-import AuthSection from './components/authSection/AuthSection';
+import AuthSection from './components/auth/AuthSection';
 
 export default async function Home() {
 	const session = await auth0.getSession();

@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './topBar.module.scss';
 
 // Components imports
-import LogoutButton from '../authSection/buttons/LogoutButton';
+import LogoutButton from '../auth/buttons/LogoutButton';
 
 interface TopBarProps {
 	userName: string;

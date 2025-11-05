@@ -8,9 +8,9 @@ import styles from './authSection.module.scss';
 
 // Components imports
 import LoginButton from './buttons/LoginButton';
-import LoginModal from '../ui/modals/LoginModal';
+import LoginModal from './modals/LoginModal';
 import RegisterButton from './buttons/RegisterButton';
-import RegisterModal from '../ui/modals/RegisterModal';
+import RegisterModal from './modals/RegisterModal';
 
 const AuthSection = () => {
 	const [activeModal, setActiveModal] = useState({

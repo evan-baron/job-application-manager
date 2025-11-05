@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Modal from '../Modal';
-import styles from '../modal.module.scss';
+import Modal from '../../ui/Modal';
+import styles from '../../ui/modal.module.scss';
 
 interface LoginFormData {
 	email: string;
