@@ -20,11 +20,13 @@ export default function NavigationItem({
 		<li role='none'>
 			<Link
 				href={href}
-				className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+				className={`${
+					label !== 'New Email' ? styles.navLink : styles.actionButton
+				} ${isActive ? styles.active : ''}`}
 				aria-current={isActive ? 'page' : undefined}
 				aria-label={`Navigate to ${label} page`}
 			>
-				{label}
+				<span>{label}</span>
 			</Link>
 		</li>
 	);

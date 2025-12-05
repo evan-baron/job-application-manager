@@ -10,7 +10,7 @@ export default function RegisterModal({ isOpen, onClose }: RegisterModalProps) {
 	return (
 		<Modal isOpen={isOpen} onClose={onClose} title='Register'>
 			<div className={styles.authModal}>
-				<p>Registration closed at this time.</p>
+				<p>Registration is closed at this time.</p>
 			</div>
 		</Modal>
 	);

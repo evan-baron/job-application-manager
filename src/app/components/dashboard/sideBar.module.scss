@@ -1,21 +1,17 @@
 .sideBar {
 	width: 16.25rem;
 	background: var(--background-secondary);
-	border-right: 0.0625rem solid var(--border-light);
 	box-shadow: var(--shadow-sm);
 	overflow-y: auto;
 	position: relative;
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		width: 0.1875rem;
-		background: var(--gradient-secondary);
-		opacity: 0.6;
-	}
+	border-width: 0;
+	border-right: 0.1875rem solid transparent;
+	border-image: linear-gradient(
+		135deg,
+		hsla(189, 94%, 43%, 0.6) 0%,
+		hsla(188, 86%, 53%, 0.6) 100%
+	);
+	border-image-slice: 1;
 
 	.navigation {
 		padding: 1.5rem 0;

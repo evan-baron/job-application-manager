@@ -24,7 +24,7 @@ export default function TopBar({ userName }: TopBarProps) {
 					id='app-title'
 					aria-label='Application Follow-up Manager - Main application title'
 				>
-					Application Follow-up Manager
+					Application Autom<span>ai</span>tion
 				</h1>
 				<div
 					className={styles.userSection}

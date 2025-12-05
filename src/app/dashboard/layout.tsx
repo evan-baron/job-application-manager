@@ -23,6 +23,9 @@ export default async function DashboardLayout({
 		redirect('/');
 	}
 
+	const { findOrCreateUser } = await import('@/services/userService');
+	await findOrCreateUser(user);
+
 	return (
 		<div
 			className={styles.dashboardLayout}

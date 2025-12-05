@@ -185,3 +185,20 @@ a {
 		}
 	}
 }
+
+.close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	background: transparent;
+	color: var(--text-secondary);
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0;
+	justify-content: center;
+	cursor: pointer;
+}

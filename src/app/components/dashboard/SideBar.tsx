@@ -9,11 +9,11 @@ import NavigationItem from './NavigationItem';
 
 // Navigation data
 const navigationItems = [
+	{ href: '/dashboard/new-email', label: 'New Email' },
 	{ href: '/dashboard', label: 'Dashboard' },
 	{ href: '/dashboard/analytics', label: 'Analytics' },
 	{ href: '/dashboard/contacts', label: 'Contacts' },
 	{ href: '/dashboard/in-progress', label: 'In Progress' },
-	{ href: '/dashboard/new-email', label: 'New Email' },
 	{ href: '/dashboard/templates', label: 'Templates' },
 	{ href: '/dashboard/settings', label: 'Settings' },
 ];

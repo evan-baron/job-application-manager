@@ -3,6 +3,9 @@
 import { useEffect } from 'react';
 import styles from './modal.module.scss';
 
+// Components Import
+import CloseButton from '../auth/buttons/CloseButton';
+
 interface ModalProps {
 	isOpen?: boolean;
 	onClose?: () => void;
@@ -37,18 +40,14 @@ export default function Modal({
 	if (!isOpen) return null;
 
 	return (
-		<div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-			<div className={styles.modalHeader}>
-				<h2>{title}</h2>
-				<button
-					className={styles.modalClose}
-					onClick={onClose}
-					aria-label='Close modal'
-				>
-					×
-				</button>
+		<>
+			<div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+				<div className={styles.modalHeader}>
+					<h2>{title}</h2>
+				</div>
+				<div className={styles.modalBody}>{children}</div>
 			</div>
-			<div className={styles.modalBody}>{children}</div>
-		</div>
+			<CloseButton onClick={onClose!} />
+		</>
 	);
 }
